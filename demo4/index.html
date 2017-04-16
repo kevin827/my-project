@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用循环将三个div变色</title>
+	<style>
+		#outer{
+			width: 600px;
+			margin: 0 auto;
+			display: flex;
+		}
+		#outer div{
+			width: 100px;
+			height: 100px;
+			background: #000;
+			margin-left: 20px;
+		}
+		#btn{
+			margin-left: 450px;
+			margin-bottom: 100px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">用循环将三个div变成蓝色</button>
+	<div id="outer">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<script>
+		var btn=document.getElementById("btn"),
+			odiv=document.getElementById("outer").getElementsByTagName("div");
+			btn.onclick=function(){
+				for(var i=0;i<odiv.length;i++){
+					odiv[i].style.background="lightgreen";
+				}
+			}
+	</script>
+</body>
+</html>
