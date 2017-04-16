@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>控制div属性</title>
+	<style>
+		.outer{
+			width: 600px;
+			text-align: center;
+			margin: 50px auto;
+			padding: 0;
+		}
+		input{
+			width: 100px;
+			height: 30px;
+			border: none;
+			background: lightgreen;
+			border-radius: 5px;
+			color: red;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: #000;
+			margin: 100px auto;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<input type="button" value="变宽">
+		<input type="button" value="变高">
+		<input type="button" value="变色">
+		<input type="button" value="隐藏">
+		<input type="button" value="重置">
+		<div id="box"></div>
+	</div>
+	<script>
+		function changeStyle(ele,attr,value){
+			ele.style[attr]=value;
+		}
+		window.onload=function(){
+			var Obtn=document.getElementsByTagName("input"),
+				box=document.getElementById("box"),
+				oAtt=["width","height","background","display","display"],
+				oVal=["300px","300px","lightgreen","none","block"];
+
+				for(var i=0;i<Obtn.length;i++){
+					Obtn[i].index=i;
+					Obtn[i].onclick=function(){
+						this.index==Obtn.length-1 && (box.style.cssText="");
+						changeStyle(box,oAtt[this.index],oVal[this.index]);
+					}
+				}
+		}
+	</script>
+</body>
+</html>

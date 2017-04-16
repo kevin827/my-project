@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页换肤</title>
+	<style>
+		*{
+			list-style: none;
+			text-decoration: none;
+		}
+		.outer{
+			width: 600px;
+			height: 300px;
+			margin: 0 auto;
+		}
+		#oul{
+			width: 200px;
+			height: 30px;
+		}
+		#oul li{
+			width: 30px;
+			height: 30px;
+			float: left;
+			margin-right: 30px;
+		}
+		.bg{
+			width: 10px;
+			height: 10px;
+			background: #fff;
+			display: inline-block;
+			margin-left: 10px;
+			margin-top: 10px;
+		}
+		#list{
+			width: 600px;
+			height: 30px;
+			line-height: 30px;
+			display: flex;
+			text-align: center;
+		}
+		#list li{
+			width: 100px;
+			height: 30px;
+			border-right: 1px solid #fff;
+		}
+		#list li a{
+			color: #fff;
+		}
+		#list li a:hover{
+			color: orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<ul id="oul">
+			<li style="background:red;"><span></span></li>
+			<li style="background:green;"><span></span></li>
+			<li style="background:skyblue;"><span></span></li>
+		</ul>
+		<ol id="list">
+			<li><a href="">新闻</a></li>
+			<li><a href="">娱乐</a></li>
+			<li><a href="">体育</a></li>
+			<li><a href="">电影</a></li>
+			<li><a href="">音乐</a></li>
+			<li><a href="">旅游</a></li>
+		</ol>
+	</div>
+	<script>
+		var oul=document.getElementById("oul").getElementsByTagName("li"),
+			span=document.getElementsByTagName("span"),
+			list=document.getElementById("list"),
+			body=document.getElementsByTagName("body")[0],
+			arr=["pink","blue","yellow"],
+			arr1=["red","green","skyblue"];
+			body.style.background="pink";
+			list.style.background="red";
+			for(var i=0;i<oul.length;i++){
+				oul[i].index=i;
+				span[0].className="bg";
+				oul[i].onclick=function(){
+					for(var i=0;i<oul.length;i++){
+						span[i].className="";
+						body.style.background="";
+						list.style.background="";
+					}
+					span[this.index].className="bg";
+					body.style.background=arr[this.index];
+					list.style.background=arr1[this.index];
+				}
+			}
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数接收参数并弹出</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<p><input type="text" value="北京"></p>
+	<p><input type="text" value="海淀区"></p>
+	<p><button id="btn">传参</button></p>
+	<script>
+		var parameter=function(a,b){
+			alert(a.value);
+			alert(b.value);
+		}
+		var oinput=document.getElementsByTagName("input"),
+			btn=document.getElementById("btn");
+		btn.onclick=function(){
+			parameter(oinput[0],oinput[1]);
+		}
+	</script>
+</body>
+</html>
