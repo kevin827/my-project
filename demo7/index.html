@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度输入法</title>
+	<style>
+		*{
+			list-style: none;
+		}
+		#outer{
+			width: 200px;
+			height: 100px;
+			margin: 0 auto;
+		}
+		#outer button{
+			width: 100px;
+			height: 30px;
+			background: green;
+			color: #fff;
+			border: none;
+		}
+		#ime{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="outer">
+    	<button>输入法</button>
+	    <ul id="ime">
+	        <li><a href="">手写</a></li>
+	        <li><a href="">拼音</a></li>
+	        <li id="close"><a href="">关闭</a></li>
+	    </ul>
+	</div>
+	<script>
+		var btn=document.getElementsByTagName("button")[0],
+			oime=document.getElementById("ime"),
+			oclose=document.getElementById("close");
+			btn.onclick=function(){
+				oime.style.display=oime.style.display=="block"?"none":"block"
+			}
+			oclose.onclick=function(){
+				oime.style.display="none";
+			}
+	</script>
+</body>
+</html>
