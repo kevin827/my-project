@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框(全选，全不选，反选)</title>
+</head>
+<body>
+	<ul class="list">
+		<li><input type="checkbox">音乐1</li>
+		<li><input type="checkbox">音乐2</li>
+		<li><input type="checkbox">音乐3</li>
+		<li><input type="checkbox">音乐4</li>
+		<li><input type="checkbox">音乐5</li>
+		<li><input type="checkbox">音乐6</li>
+	</ul>
+	<button id="all">全选</button>
+	<button id="none">全不选</button>
+	<button id="fanx">反选</button>
+	<script>
+		var all=document.getElementById("all"),
+			none=document.getElementById("none"),
+			fanx=document.getElementById("fanx"),
+			oinput=document.getElementsByTagName("input");
+			all.onclick=function(){
+				for(var i=0;i<oinput.length;i++){
+					oinput[i].checked=true;
+				}
+			}
+			none.onclick=function(){
+				for(var i=0;i<oinput.length;i++){
+					oinput[i].checked=false;
+				}
+			}
+			fanx.onclick=function(){
+				for(var i=0;i<oinput.length;i++){
+					oinput[i].checked=!oinput[i].checked;
+				}
+			}
+	</script>
+</body>
+</html>
