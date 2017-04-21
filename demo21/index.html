@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入两个数字，比较大小</title>
+	<style>
+		span{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<input type="text">
+	VS
+	<input type="text">
+	<input type="button" value="最大的数是》">
+	<span>?</span>
+	<script>
+		var oinput=document.getElementsByTagName("input"),
+			sp=document.getElementsByTagName("span")[0];
+			for(var i=0;i<oinput.length-1;i++){
+				oinput[i].onkeyup=function(){
+					this.value=this.value.replace(/[^\d]/,"");
+				}
+			}
+			oinput[2].onclick=function(){
+				(oinput[0].value=="" || oinput[1].value=="")?alert("请输入比较的数值"):(sp.innerHTML=Math.max(oinput[0].value,oinput[1].value))
+			}
+	</script>
+</body>
+</html>

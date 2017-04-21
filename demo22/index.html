@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面加载后，累加</title>
+	<style>
+		span{
+			display: inline-block;
+			width: 100px;
+			height: 50px;
+			border: 1px solid #ccc;
+			margin-left: 300px;
+			text-align: center;
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<span></span>
+	<script>
+		window.onload=function(){
+			var sp=document.getElementsByTagName("span")[0],
+				sum=0;
+			setInterval(num,1000);
+			num();
+			function num(){
+				sp.innerHTML=++sum;
+			}
+		}
+	</script>
+</body>
+</html>

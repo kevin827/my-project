@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>累加按钮，自加1</title>
+	<style>
+		input{
+			width: 60px;
+			height: 30px;
+			margin-left: 100px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="0">
+	<script>
+		var btn=document.getElementsByTagName("input")[0];
+		var num=0;
+		btn.onclick=function(){
+			btn.value=++num;
+			alert(num);
+		}
+	</script>
+</body>
+</html>
