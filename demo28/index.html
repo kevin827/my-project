@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+			border: 2px solid lightgreen;
+			border-radius: 100%;
+			border-color: lightgreen lightgreen transparent;
+			-webkit-animation: active 1s linear infinite;
+		}
+		@-webkit-keyframes active{
+			50%{
+				transform:rotate(180deg) scale(.8);
+			}
+			100%{
+				transform:rotate(360deg) scale(1);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

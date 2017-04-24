@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+			border: 2px solid lightgreen;
+			border-radius: 100%;
+			border-color: transparent lightgreen transparent;
+			position: relative;
+			-webkit-animation: active 1s linear infinite;
+		}
+		.box span{
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+			background: lightgreen;
+			border-radius: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			margin-left: 25px;
+			margin-top: 25px;
+		}
+		@-webkit-keyframes active{
+			50%{
+				transform:rotate(180deg) scale(.8);
+			}
+			100%{
+				transform:rotate(360deg) scale(1);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span></span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二级菜单</title>
+</head>
+<body>
+	<select name="" id="list1"></select>
+	<select name="" id="list2"></select>
+	<script>
+		var list1=document.getElementById("list1"),
+			list2=document.getElementById("list2");
+			var city=["山西省","河北省","陕西省"];
+			city["山西省"]=["太原市","吕梁市","运城市"];
+			city["河北省"]=["石家庄市","唐山市","承德市"];
+			city["陕西省"]=["西安市","渭南市","高陵市"];
+			for(var i=0;i<city.length;i++){
+				var op=new Option(city[i]);
+				list1.options.add(op);
+			}
+			for(var i=0;i<city["山西省"].length;i++){
+			var op=new Option(city["山西省"][i]);
+			list2.options.add(op);
+		}
+			list1.onchange=function(){
+				var p=this.value;
+				list2.options.length=0
+				for(var i=0;i<city[p].length;i++){
+					var op=new Option(city[p][i]);
+					list2.options.add(op);
+			}
+			}
+	</script>
+</body>
+</html>
