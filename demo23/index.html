@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断数字是否为两位数</title>
+</head>
+<body>
+	<input type="text">
+	<input type="button" value="是否为两位数">
+	<span></span>
+	<script>
+		var oinput=document.getElementsByTagName("input"),
+			sp=document.getElementsByTagName("span")[0];
+		oinput[0].onkeyup=function(){
+			this.value=this.value.replace(/[^\d]/,"");
+		}
+		oinput[1].onclick=function(){
+			(oinput[0].value=="")?alert("请输入数字"):alert("这是" + oinput[0].value.length + "位数")
+		}
+	</script>
+</body>
+</html>

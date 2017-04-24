@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数字时钟</title>
+	<style>
+		*{padding: 0; margin: 0;}
+		body{font-size: 60px; background: #000; color: #fff;}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="" alt="">
+		<img src="" alt="">:
+		<img src="" alt="">
+		<img src="" alt="">:
+		<img src="" alt="">
+		<img src="" alt="">
+	</div>
+	<script>
+	// 判断，如果是个位数，给前面加0,
+		function count(param){
+			var num;
+			if(param<10){
+				num="0"+param;
+			}else{
+				num=param;
+			}
+			return num;
+		}
+		var img=document.getElementsByTagName("img"),
+			time=new Date(),
+			hour=time.getHours().toString(),
+			minute=time.getMinutes().toString(),
+			second=time.getSeconds().toString(),
+			times=count(hour)+count(minute)+count(second);
+			for(var i=0;i<img.length;i++){
+				img[i].src="images/"+times[i]+".png";
+			}
+			setInterval(function(){
+			var time=new Date(),
+				hour=time.getHours().toString(),
+				minute=time.getMinutes().toString(),
+				second=time.getSeconds().toString(),
+				times=count(hour)+count(minute)+count(second);
+			for(var i=0;i<img.length;i++){
+				img[i].src="images/"+times[i]+".png";
+			}
+		},1000)
+	</script>
+</body>
+</html>
