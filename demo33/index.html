@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		*{padding: 0; margin: 0; list-style: none;}
+		#wrap{
+			width: 650px; height: 260px; border: 1px solid red;
+			margin: 80px auto; position: relative; background: pink;
+			overflow: hidden;
+		}
+		#oul{
+			position: absolute; left: 0; top: 0; width: 2600px;
+			height: 260px;
+		}
+		#oul li{
+			float: left; width: 650px; height: 260px;
+		}
+		#oul li img{
+			width: 100%;
+			height: 260px;
+		}
+		#oli{
+			position: absolute; right: 50px; bottom: 30px; 
+		}
+		#oli li{
+			width: 30px; height: 30px; border-radius: 30px;
+			background: #666; float: left; margin-left: 5px;color: #fff;
+			text-align: center; line-height: 30px;
+		}
+		#left{
+			position: absolute; left: 30px; top: 115px; font-size: 26px;
+			font-weight: bold; color: #666;
+		}
+		#right{
+			position: absolute; right: 30px; top: 115px; font-size: 26px;
+			font-weight: bold; color: #666;
+		}
+		#oli li.bg{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="oul">
+			<li><img src="images/1.jpg" alt=""></li>
+			<li><img src="images/2.jpg" alt=""></li>
+			<li><img src="images/3.jpg" alt=""></li>
+			<li><img src="images/4.jpg" alt=""></li>
+		</ul>
+		<ol id="oli">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ol>
+		<div id="left">&lt</div>
+		<div id="right">&gt</div>
+	</div>
+	<script>
+		var oul=document.getElementById("oul"),
+			lis=oul.getElementsByTagName("li"),
+			Oli=document.getElementById("oli"),
+			oli=Oli.getElementsByTagName("li"),
+			left=document.getElementById("left"),
+			right=document.getElementById("right"),
+			nums=0,
+			timer=null;
+			function auto(){
+				nums++;
+				if(nums>lis.length-1)nums=0;
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.display="none";
+					oli[i].className="";
+				}
+				lis[nums].style.display="block";
+				oli[nums].className="bg";
+			}
+			timer=setInterval(auto,1000);
+			// 滑过停止，离开继续播放
+			wrap.onmouseover=function(){
+				clearInterval(timer);
+			}
+			wrap.onmouseout=function(){
+				timer=setInterval(auto,1000);
+			}
+			for(var i=0;i<oli.length;i++){
+				oli[i].index=i;
+				oli[i].onclick=function(){
+					nums=this.index;
+					Change(this.index);
+				}
+			}
+			function Change(id){
+				for(var i=0;i<lis.length;i++){
+					if(nums>lis.length-1)nums=0;
+					lis[i].style.display="none";
+					oli[i].className="";
+				}
+				lis[id].style.display="block";
+				oli[id].className="bg";
+			}
+			right.onclick=function(){
+				auto();
+			}
+			left.onclick=function(){
+				nums--;
+				if(nums<0)nums=lis.length-1;
+				Change(nums);
+			}
+	</script>
+</body>
+</html>

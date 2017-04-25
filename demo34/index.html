@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{list-style: none; padding: 0; margin: 0;}
+		#box{width: 150px; height: 30px; border: 2px solid #f00; margin: 50px auto; overflow: hidden;}
+		#oul li{line-height: 30px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul id="oul">
+			<li>11111111</li>
+			<li>22222222</li>
+			<li>33333333</li>
+			<li>44444444</li>
+			<li>55555555</li>
+			<li>66666666</li>
+			<li>77777777</li>
+			<li>88888888</li>
+		</ul>
+	</div>
+	<script>
+		var oul=document.getElementById("oul"),
+			oli=oul.getElementsByTagName("li");
+			function move(){
+				var ele=oli[0].cloneNode(true);
+				oul.removeChild(oli[0]);
+				oul.appendChild(ele);
+			}
+			setInterval(move,1000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>按下键盘显示keyCode</title>
+</head>
+<body>
+	<p>这里是显示你按下键盘的keyCode值</p>
+	<script>
+		var op=document.getElementsByTagName("p")[0];
+		document.onkeydown=function(event){
+			var oe=event || window.event
+			op.innerHTML=oe.keyCode
+		}
+	</script>
+</body>
+</html>
