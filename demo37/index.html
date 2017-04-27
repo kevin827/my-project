@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝运动</title>
+	<style>
+		*{padding: 0; margin: 0; list-style: none;}
+		#box{width: 712px; height: 108px; background: red; position: relative; margin: 100px auto; }
+		#box ul{position: absolute; left: 0; height: 0;}
+		#box ul li{float: left;width: 178px; height: 108px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="images/a.jpg" alt=""></li>
+			<li><img src="images/b.jpg" alt=""></li>
+			<li><img src="images/c.jpg" alt=""></li>
+			<li><img src="images/d.jpg" alt=""></li>
+		</ul>
+	</div>
+	<script>
+		var oul=document.getElementsByTagName("ul")[0],
+			oli=oul.getElementsByTagName("li");
+		oul.innerHTML=oul.innerHTML+oul.innerHTML;
+		oul.style.width=oli[0].offsetWidth*oli.length+"px";
+		setInterval(function(){
+			if(oul.offsetLeft<-oul.offsetWidth/2){
+				oul.style.left="0";
+			}
+			oul.style.left=oul.offsetLeft-10+"px";
+		},100)
+	</script>
+</body>
+</html>

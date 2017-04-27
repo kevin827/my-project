@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<style>
+		div{
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script>
+		var odiv=document.getElementsByTagName("div");
+		document.onmousemove=function(ev){
+			for(var i=odiv.length-1;i>0;i--){
+				odiv[i].style.left=odiv[i-1].offsetLeft+"px"
+				odiv[i].style.top=odiv[i-1].offsetTop+"px"
+			}
+			var oevent=ev || window.event;
+			var x=oevent.clientX;
+			var y=oevent.clientY;
+			odiv[0].style.left=x-10+"px";
+			odiv[0].style.top=y-10+"px";
+		}
+	</script>
+</body>
+</html>
