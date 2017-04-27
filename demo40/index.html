@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浏览器变色</title>
+	<style>
+		*{margin: 0; padding: 0; margin: 0 auto;}
+		#box{width: 100%; height: 650px;}
+		#st_box{width: 650px; height: 650px;  background: red; 
+			border: 1px solid #000;}
+			#col{
+				position: absolute;
+				left: 650px;
+				top: 100px;
+			}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="st_box"></div>
+			<select name="" id="col">
+				<option value="red">red</option>
+				<option value="purple">purple</option>
+				<option value="pink">pink</option>
+				<option value="blue">blue</option>
+				<option value="yellow">yellow</option>
+				<option value="green">green</option>
+			</select>
+	</div>
+	<script>
+		var st_box=document.getElementById("st_box");
+		var col=document.getElementById("col");
+		col.onchange=function(){
+			st_box.style.backgroundColor=this.value;
+		}
+	</script> 
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点名器</title>
+	<style>
+		#box{width: 500px; height: 500px; background: pink; margin: 0 auto; position: relative; border-radius: 20px;}
+		#start{ width:60px; height:30px; border-radius: 5px; position: absolute; bottom: 80px; left: 80px;}
+		#stop{ width:60px; height:30px; border-radius: 5px; position: absolute; bottom: 80px; right: 80px;}
+		span{position: absolute; left: 200px; top: 200px; color: #fff; font-size: 50px; display: inline-block; background: #000;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<span id="sp">李一</span>
+		<button id="start">开始</button>
+		<button id="stop">停止</button>
+	</div>
+	<script>
+		var name1=["李一","王二","郎三","杨四","魏五","李六","宁七"];
+		var sp=document.getElementById("sp"),
+			start=document.getElementById("start"),
+			stop=document.getElementById("stop");
+			function count(){
+				var aa=Math.floor(Math.random()*7);
+				return sp.innerHTML=name1[aa];
+			}
+			start.onclick=function(){
+				time=setInterval(count,100)
+				start.disabled=true;
+				stop.disabled=false;
+			}
+			stop.onclick=function(){
+				clearInterval(time);
+				start.disabled=false;
+				stop.disabled=true;
+			}
+			// 按下键盘开始，再按下键盘结束
+			document.onkeydown=function(ev){
+				var oevent=ev || window.event;
+				if(oevent.keyCode==32){
+					if(start.disabled){
+						clearInterval(time)
+						start.disabled=false;
+						stop.disabled=true;
+
+					}else{
+						time=setInterval(count,100)
+						start.disabled=true;
+						stop.disabled=false;
+					}
+				}
+			}
+	</script>
+</body>
+</html>

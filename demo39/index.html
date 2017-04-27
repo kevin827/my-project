@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>推拉门</title>
+	<style>
+		*{margin: 0; padding: 0;}
+		#box{width: 838px; height: 405px; position: relative; overflow: hidden; margin: 0 auto;}
+		#box img{float: left; position: absolute; width: 538px; height: 405px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="images/1.jpg" alt="">
+		<img src="images/2.jpg" alt="">
+		<img src="images/3.jpg" alt="">
+		<img src="images/4.jpg" alt="">
+		<img src="images/5.jpg" alt="">
+		<img src="images/6.jpg" alt="">
+		<img src="images/7.jpg" alt="">
+	</div>
+	<script>
+		var box=document.getElementById("box"),
+			img=document.getElementsByTagName("img");
+			for(var i=0;i<img.length;i++){
+				if(i>0){
+					img[i].style.left=538+(i-1)*50+"px";
+				}
+				img[i].index=i;
+				img[i].onmouseover=function(){
+					for(var i=0;i<img.length;i++){
+						img[i].style.left=538+(i-1)*50+"px";
+					}
+					for(var j=0;j<=this.index;j++){
+						img[j].style.left=j*50+"px";
+					}
+				}
+			}
+	</script>
+</body>
+</html>
