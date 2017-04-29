@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小星星</title>
+	<style>
+		*{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<script>
+	// 第一个
+		for(var i=1;i<=5;i++){
+			for(var j=1;j<=i;j++){
+				document.write("*"+"&nbsp;");
+			}
+			document.write("<br>");
+		}
+
+		// 第二个
+		for(var i=1;i<=9;i+=2){
+			for(var j=1;j<=i;j++){
+				document.write("*"+"&nbsp;");
+			}
+			document.write("<br>");
+		}
+
+		// 第三个
+		for(var i=1;i<=7;i++){
+			for(var j=1;j<=i;j++){
+				document.write("*"+"&nbsp;");
+			}
+			document.write("<br>");
+		}
+		for(var i=1;i<=6;i++){
+			for(var j=6;j>=i;j--){
+				document.write("*"+"&nbsp;");
+			}
+			document.write("<br>");
+		}
+
+		// 第四个
+		for(var i=1;i<=7;i++){
+			for(var j=1;j<=i;j++){
+				if(j==1 || j==i){
+					document.write("*"+"&nbsp;");
+				}else{
+					document.write("&nbsp;");
+				}
+			}
+			document.write("<br>");
+		}
+		for(var i=1;i<=6;i++){
+			for(var j=6;j>=i;j--){
+				if(j==6 || j==i){
+					document.write("*"+"&nbsp;");
+				}else{
+					document.write("&nbsp;");
+				}
+			}
+			document.write("<br>");
+		}
+	</script>
+</body>
+</html>

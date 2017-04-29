@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点我就闪</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			background: red;
+			line-height: 200px;
+			text-align: center;
+			color: #fff;
+			cursor:pointer;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin: -100px 0 0 -100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">点我就闪</div>
+	<script>
+		var box=document.getElementById("box"),
+			timer=null;
+			box.onclick=function(){
+				var i=0;
+				clearInterval(timer);
+				timer=setInterval(function(){
+					box.style.display=i++%2?"none":"block";
+					i>6 && (clearInterval(timer))
+				},100)
+			}
+	</script>
+</body>
+</html>

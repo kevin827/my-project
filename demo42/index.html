@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论</title>
+	<style>
+		*{padding: 0; margin: 0; list-style: none;}
+		#box{width: 400px; height: 400px; border: 3px solid #f00; margin: 20px auto;}
+		#area{display: none;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li>头像网名：文字，时间</li>
+		</ul>
+		<input type="text" placeholder="我也要说一句..." id="txt">
+		<textarea name="" id="area" cols="30" rows="10"></textarea>
+		<input type="button" id="btn" value="发表">
+	</div>
+	<script>
+		var oul=document.getElementsByTagName("ul")[0],
+			oli=oul.getElementsByTagName("li"),
+			txt=document.getElementById("txt"),
+			area=document.getElementById("area"),
+			btn=document.getElementById("btn");
+		txt.onfocus=function(){
+			txt.style.display="none";
+			area.style.display="block";
+		}
+		btn.onclick=function(){
+			var aa=document.createElement("li");
+			var bb=document.createTextNode(area.value+new Date().toLocaleString());
+			aa.appendChild(bb);
+			oul.appendChild(aa);
+			txt.style.display="block";
+			area.style.display="none";
+			area.value=" ";
+
+			for(var i=0;i<oli.length;i++){
+			oli[i].ondblclick=function(){
+				oul.removeChild(this);
+			}
+		}
+		}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单词</title>
+	<style>
+		#par span{display: inline-block; background: yellow;}
+	</style>
+</head>
+<body>
+	<span>Search:</span><input type="text" id="txt">
+	<p id="par">I like move move, Move. I like move move, Move! This is my hert. This is my brother. This is my friend. your english is very pool.<br/><br/><br/>I like move move, Move. I like move move, Move! This is my hert. This is my brother. This is my friend. your english is very pool.<br/><br/><br/>I like move move, Move. I like move move, Move! This is my hert. This is my brother. This is my friend. your english is very pool.</p>
+	<script>
+		var txt=document.getElementById("txt");
+		var p1=document.getElementById("par");
+		var aa=p1.innerHTML;
+		document.onkeyup=function(){
+			var bb=txt.value;
+			var reg=RegExp(bb,"ig")
+			p1.innerHTML=aa.replace(reg,function(cc){
+				return "<span>"+cc+"</span>"
+			})
+		}
+	</script>
+</body>
+</html>
