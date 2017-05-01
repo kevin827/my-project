@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>富媒体编辑器</title>
+	<style>
+		#box{width: 650px; height: 450px; border: 1px solid #ccc; margin: 35px auto;}
+		#col{margin-left: 425px;}
+		#sp{width: 255px; height: 140px; display: inline-block; border: 1px solid #ccc; position: absolute; top: 25px; left: 25px; display: none;}
+	</style>
+</head>
+<body>
+	<button id="col">颜色</button>
+	<img src="images/unbold.gif" alt="" id="bol">
+	<button id="ita">倾斜</button>
+	<button id="und">下划线</button>
+	<button id="lbtn">左对齐</button>
+	<button id="cbtn">居中对齐</button>
+	<button id="rbtn">右对齐</button>
+	<button id="pic">表情</button>
+	<span id="sp">
+		<img src="images/1.gif" alt="">
+		<img src="images/2.gif" alt="">
+		<img src="images/3.gif" alt="">
+		<img src="images/4.gif" alt="">
+		<img src="images/5.gif" alt="">
+		<img src="images/6.gif" alt="">
+		<img src="images/7.gif" alt="">
+		<img src="images/8.gif" alt="">
+		<img src="images/9.gif" alt="">
+		<img src="images/10.gif" alt="">
+		<img src="images/11.gif" alt="">
+		<img src="images/12.gif" alt="">
+		<img src="images/13.gif" alt="">
+		<img src="images/14.gif" alt="">
+		<img src="images/15.gif" alt="">
+		<img src="images/16.gif" alt="">
+		<img src="images/17.gif" alt="">
+		<img src="images/18.gif" alt="">
+		<img src="images/19.gif" alt="">
+		<img src="images/20.gif" alt="">
+		<img src="images/21.gif" alt="">
+		<img src="images/22.gif" alt="">
+		<img src="images/23.gif" alt="">
+		<img src="images/24.gif" alt="">
+		<img src="images/25.gif" alt="">
+		<img src="images/26.gif" alt="">
+		<img src="images/27.gif" alt="">
+		<img src="images/28.gif" alt="">
+		<img src="images/29.gif" alt="">
+		<img src="images/30.gif" alt="">
+	</span>
+	<div id="box" contenteditable="true"></div>
+	<script>
+		var col=document.getElementById("col"),
+			bol=document.getElementById("bol"),
+			ita=document.getElementById("ita"),
+			und=document.getElementById("und"),
+			lbtn=document.getElementById("lbtn"),
+			cbtn=document.getElementById("cbtn"),
+			rbtn=document.getElementById("rbtn"),
+			pic=document.getElementById("pic"),
+			sp=document.getElementById("sp"),
+			img=sp.getElementsByTagName("img");
+			col.onclick=function(){
+				document.execCommand("ForeColor",false,"red");
+			}
+			bol.onclick=function(){
+				document.execCommand("Bold",false,"null");
+				if(document.queryCommandState("bold")){
+					this.src="images/bold.gif"
+				}else{
+					this.src="images/unbold.gif"
+				}
+			}
+			ita.onclick=function(){
+				document.execCommand("Italic",false,"null");
+			}
+			und.onclick=function(){
+				document.execCommand("Underline",false,"null");
+			}
+			lbtn.onclick=function(){
+				document.execCommand("JustifyLeft",false,"null");
+			}
+			cbtn.onclick=function(){
+				document.execCommand("JustifyCenter",false,"null");
+			}
+			rbtn.onclick=function(){
+				document.execCommand("JustifyRight",false,"null");
+			}
+			pic.onclick=function(){
+				sp.style.display="block";
+				for(var i=0;i<img.length;i++){
+					img[i].index=i;
+					img[i].onclick=function(){
+						document.execCommand("InsertImage",false,"images/"+(this.index+1)+".gif");
+						sp.style.display="none";
+					}
+				}
+			}
+
+			// 封装函数
+			function myExec(attr,val){
+				document.execCommand(attr,false,val);
+			}
+	</script>
+</body>
+</html>

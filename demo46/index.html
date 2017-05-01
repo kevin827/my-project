@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格</title>
+	<style>
+		#tab{width:600px; height:200px; border-collapse: collapse; margin: 50px auto;}
+		#tab tr td{border: 1px solid red; text-align: center;}
+		#tab tr th{border: 1px solid red; font-size: 22px; font-weight: bold;}
+		.bg{background: red;}
+	</style>
+
+</head>
+<body>
+	<table id="tab">
+		<thead>
+			<tr>
+				<th colspan="5">学生信息表</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>编号</td>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>身高</td>
+				<td>薪资</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>魏方方</td>
+				<td>25</td>
+				<td>175</td>
+				<td>26000</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>李大大</td>
+				<td>23</td>
+				<td>173</td>
+				<td>18000</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>郭轻轻</td>
+				<td>20</td>
+				<td>160</td>
+				<td>20000</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>李阳杨</td>
+				<td>23</td>
+				<td>178</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>张玉玉</td>
+				<td>24</td>
+				<td>172</td>
+				<td>23000</td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+		var tab=document.getElementById("tab"),
+			tbody=tab.tBodies[0];
+			trs=tbody.rows;
+			tds=trs[0].cells;
+			for(var i=0;i<tds.length;i++){
+				tds[i].index=i;
+				tds[i].onclick=function(){
+					var arr=[];
+					for(var j=1;j<trs.length;j++){
+						arr.push({
+						val:trs[j].cells[this.index].innerHTML,
+						row:trs[j]
+					})
+						for(var m=0;m<trs[j].cells.length;m++){
+							trs[j].cells[m].className=""
+						}
+						trs[j].cells[this.index].className="bg"
+				}
+					for(var m=0;m<arr.length;m++){
+						for(var n=m+1;n<arr.length;n++){
+							if(Number(arr[n].val)<Number(arr[m].val)){
+								var temp=arr[n];
+								arr[n]=arr[m];
+								arr[m]=temp;
+							}
+						}
+					}
+					for(var i=0;i<arr.length;i++){
+						tbody.appendChild(arr[i].row);
+					}
+				}
+			}
+
+	</script>
+</body>
+</html>
