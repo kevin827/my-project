@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this的指向问题</title>
+</head>
+<body>
+	<script>
+		// 1.普通函数的调用
+		function person(){
+	        this.name="xl";
+	        console.log(this);
+	        console.log(this.name);
+	    }
+	    person();  //输出  window  xl 
+
+
+	    var name="xl";
+	    function person(){
+	        console.log(this.name);
+	    }
+	    person(); //输出 xl
+
+	    // 2.作为方法来调用
+	    var name="XL";
+	    var person={
+	        name:"xl",
+	        showName:function(){
+	            console.log(this.name);
+	        }
+	    }
+	    person.showName();  //输出  xl
+    //这里是person对象调用showName方法，很显然this关键字是指向person对象的，所以会输出name
+    
+	    var showNameA=person.showName;
+	    showNameA();    //输出  XL
+    //这里将person.showName方法赋给showNameA变量，此时showNameA变量相当于window对象的一个属性，因此showNameA()执行的时候相当于window.showNameA(),即window对象调用showNameA这个方法，所以this关键字指向window
+
+    // 3.作为构造函数来调用
+	    function  Person(name){
+	        this.name=name;
+	    }
+	    var personA=Person("xl");
+	    console.log(personA.name); // 输出  undefined
+	    console.log(window.name);//输出  xl
+	    //上面代码没有进行new操作，相当于window对象调用Person("xl")方法，那么this指向window对象，并进行赋值操作window.name="xl".
+	    
+	    var personB=new Person("xl");
+	    console.log(personB.name);// 输出 xl
+
+
+	    // 4.call/apply方法的调用
+	     var name="XL";
+	    var Person={
+	        name:"xl",
+	        showName:function(){
+	            console.log(this.name);
+	        }
+	    }
+	    Person.showName.call(); //输出 "XL"
+	    //这里call方法里面的第一个参数为空，默认指向window。
+	    //虽然showName方法定义在Person对象里面，但是使用call方法后，将showName方法里面的this指向了window。因此最后会输出"XL";
+
+	    // Function.prototype.bind()方法
+	    	var name="XL";
+		    function Person(name){
+		        this.name=name;
+		        this.sayName=function(){
+		            setTimeout(function(){
+		                console.log("my name is "+this.name);
+		            },50)
+		        }
+		    }
+		    var person=new Person("xl");
+		    person.sayName()  //输出  “my name is XL”;
+		                       //这里的setTimeout()定时函数,相当于window.setTimeout(),由window这个全局对象对调用,因此this的指向为window, 则this.name则为XL 
+		    var name="XL";
+		    function Person(name){
+		        this.name=name;
+		        this.sayName=function(){
+		            setTimeout(function(){
+		                console.log("my name is "+this.name);
+		            }.bind(this),50)  //注意这个地方使用的bind()方法，绑定setTimeout里面的匿名函数的this一直指向Person对象
+		        }
+		    }
+		    var person=new Person("xl");
+		    person.sayName(); //输出 “my name is xl”;
+	</script>
+</body>
+</html>
