@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>20道小算法</title>
+</head>
+<body>
+	<script>
+		// 1.冒泡排序
+		
+		var nums=[1,4,3,8,6,3,9,7,9];
+		function paixu(nums){
+			for(i=0;i<nums.length;i++){
+			for(j=i+1;j<nums.length;j++){
+				if(nums[i]>nums[j]){
+					var temp=nums[i];
+					nums[i]=nums[j];
+					nums[j]=temp;
+				}
+			}
+		}
+		return nums;
+	}
+	console.log(paixu(nums));
+
+// 2.去重数组
+
+		var nums=[1,3,5,7,9,3,5,7,9];
+		function fx(){
+			var arr=[];
+			for(var i=0;i<nums.length;i++){
+				if(arr.indexOf(nums[i])==-1){
+					arr.push(nums[i]);
+				}
+			}
+			return arr;
+		}
+		console.log(fx(nums));
+
+
+// 3.字符串出现最多个数
+
+		var arr="asdadfdfrwtrfdsffsfgbag";
+		function finger(arr,value){
+			var count=0;
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]==value){
+					count++;
+				}
+			}
+			return count;
+		}
+		console.log(finger(arr,"d"));
+
+
+// 4.编程实现，往数组里插入一个元素
+
+		var sums=["a","b","d","e","f","g"];
+		function fx(arr,index,value){
+			for(i=arr.length-1;i>=index;i--){
+				arr[i+1]=arr[i];
+			}
+			arr[index]=value;
+		}
+		fx(sums,2,"c");
+		console.log(sums);
+
+
+// 5.编程实现IndexOf方法
+
+		var sums=[1,3,5,7,9,3,5,7];
+		function fx(arr,value){
+			for(i=0;i<arr.length;i++){
+				if(arr[i]==value){
+					return i;
+				}
+			}
+			return -1;
+		}
+		console.log(fx(sums,8));
+
+
+// 6.求数组中最大值和最小值
+
+		var arr=[1,34,23,5,78];
+		var temp=arr[0];
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]>temp){
+				temp=arr[i];
+			}
+		}
+		console.log(temp);
+
+
+// 7.将字符串转换为驼峰形式
+
+		var str="welcome-to-beijing";
+		function fx(str){
+			var arr=str.split("-");
+			var kong=[];
+			for(var i=0;i<arr.length;i++){
+				kong+=arr[i].charAt(0).toUpperCase()+arr[i].substring(1);
+			} 
+			return kong;
+		}
+		console.log(fx(str));
+
+
+// 8.将字符的每个数字都乘2
+
+		var str="1rer4r54dgf8";
+		function fx(str){
+			var arr="";
+			for(i=0;i<str.length;i++){
+				if(!isNaN(str[i])){
+					arr=arr+str[i]*2;
+				}else{
+					arr=arr+str[i];
+				}
+			}
+			return arr;
+		}
+		console.log(fx(str));
+
+
+// 9.将字符串中的数字用中括号括起来
+
+		var str="1rer4r54dgf8";
+		function fx(str){
+			var arr=str.split("");
+			for(var i=0;i<str.length;i++){
+				if(!isNaN(str[i])){
+					arr[i]="["+arr[i]+"]";
+				}
+			}
+			return arr.join("");
+		}
+		console.log(fx(str));
+
+
+// 10.让字符串重复3遍
+
+		var str="abc";
+		function fx(str,b){
+			var newstr="";
+			for(var i=1;i<=b;i++){
+				newstr+=str;
+			}
+			return newstr;
+		}
+		console.log(fx(str,3));
+
+
+// 11.输出10到100的十位随机数并排序
+
+		function fx(){
+			var temp=[];
+			for(var i=0;i<10;i++){
+				var rand=Math.floor(Math.random()*91+10);
+				temp.push(rand);
+			}
+			for(var i=0;i<temp.length;i++){
+				for(var j=i+1;j<temp.length;j++){
+					if(temp[i]>temp[j]){
+						var arr=temp[i];
+						temp[i]=temp[j];
+						temp[j]=arr;
+					}
+				}
+			}
+			return temp;
+		}
+		console.log(fx());
+
+
+// 12.写出一个段脚本，输出当前日期5天之后是星期几
+
+		var time = new Date();
+		var week = time.getDay();
+		var n=14;
+		if((n+week)>7){
+			week=(n+week)%7;
+		}else{
+			week=week+n;
+		}
+		var str=n+"天之后是星期"+["日","一","二","三","四","五","六"][week];
+		console.log(str);
+
+
+// 13.封装一个方法，实现求任意多个数的平均值。
+
+		function fx(){
+			var temp=0;
+			for(var i=0;i<arguments.length;i++){
+				temp+=arguments[i];
+			}
+			return temp/arguments.length;
+		}
+		console.log(fx(1,4,7,3,8,5,7));
+
+
+// 14.判断字符串是否对称
+
+		var str="12345treter6456dfdd";
+		function fx(arr){
+			var len=str.length;
+			for(i=0;i<len/2;i++){
+				if(arr[i]!=arr[len-1-i]){
+					return "不对称";
+				}
+			}
+			return "对称";
+		}
+		console.log(fx(str));
+
+
+// 15.随机从数组中取出三个不同的值
+
+			var arr=[1,3,5,7,9,3,5,7,9];
+			var brr=[];
+			for(i=0;brr.length<3;i++){
+				var a=Math.floor(Math.random()*arr.length);
+				var b=arr[a];
+				if(brr.indexOf(b)==-1){
+					brr.push(b);
+				}
+			}
+		console.log(brr);
+
+
+// 16.求数组中字符串的个数
+		
+
+		var str=[1,3,5,7,9,"a","b","c","d"];
+		function fx(arr){
+			var len=arr.length;
+			var sum=0;
+			for(var i=0;i<len;i++){
+				if(typeof(arr[i])=="string"){
+					sum++;
+				}
+			}
+			return sum;
+		}
+		console.log(fx(str));
+
+
+// 17.删除数组中指定的值
+
+		var str=["a","b","c","d",4,6,3,9];
+		function fx(arr,num){
+			var aa=arr.splice(num,3);
+			return aa;
+		}
+		console.log(fx(str,3));
+
+
+// 18.数组反转
+
+		var str="abcdefghijklmnopqistuvwxyz";
+		function fx(arr){
+			var arr=str.split("");
+			var aa=[];
+			for(var i=0;i<arr.length;i++){
+				aa.unshift(arr[i]);
+			}
+			return aa.join("");
+		}
+		console.log(fx(str));
+
+
+// 19.字符串反转
+		
+		var str="sdakvvvdflkew";
+		var arr=str.split("");
+		var aa=arr.reverse(str);
+		console.log(aa);
+
+
+// 20.求和
+
+		function fx(){
+			var sum=0;
+			for(var i=0;i<arguments.length;i++){
+				sum+=arguments[i];
+			}
+			return sum;
+		}
+		console.log(fx(1,3,5,7,9));
+		var sign=sign;
+		console.log(sign);
+	</script>
+</body>
+</html>
