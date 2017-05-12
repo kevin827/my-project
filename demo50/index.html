@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+</head>
+<body>
+	<script>
+		function Parent(){
+			this.name="kevin";
+		}
+		function Child(){
+			this.age=18;
+		}
+		Child.prototype=new Parent();//Child继承Parent，通过原型，形成链条
+		var test=new Child();
+		alert(test.name);
+		alert(test.age);
+		function Brother(){
+			this.hobby="打篮球";
+		}
+		Brother.prototype=new Child();
+		var exam=new Brother();
+		console.log(exam.name);
+		console.log(exam.age);
+		console.log(exam.hobby);
+	</script>
+</body>
+</html>
