@@ -1,0 +1,123 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery/jquery1.1.js"></script>
+	<style>
+		*{padding: 0; margin: 0; list-style: none;}
+		#box{width: 400px; height: 600px; border: 5px dashed orange; margin: 10px 100px; position: relative; overflow: hidden; box-shadow: 10px 10px 25px red; float: left;}
+		#oul{width: 1600px; height: 600px; position: absolute; left: 0; top: 0;}
+		#oul li{float: left; opacity: 0.8;}
+		#oul li img{width: 400px; height: 600px;}
+		#ols{position: absolute; bottom: 0;}
+		#ols li{width: 90px; height: 90px; float: left; border: 3px solid red; margin-left: 4px; opacity: 0.8;}
+		#ols li:nth-of-type(1){margin-left: 1px;}
+		#ols li img{width: 90px; height: 90px;}
+		#ols li.bg{border: 3px solid green;}
+		#small_box{width: 120px; height: 120px; background: red; position: absolute; left: 0; top: 0; opacity: 0.4; display: none;}
+		#bigbox{width: 400px; height: 400px; margin-top: 10px; border: 5px dashed orange; overflow: hidden; float: left; position: relative; display: none; box-shadow: 5px 5px 25px red;}
+		#maxImg{width: 3600px; height: 1000px; position: absolute; left: 0; top: 0;}
+		#bigbox li{float: left;}
+		#bigbox li img{width: 1350px; height: 2000px;}
+	</style>
+</head>
+<body>
+	<!-- 左盒子 -->
+	<div id="box">
+		<ul id="oul">
+			<li><img src="images/20.jpg"></li>
+			<li><img src="images/8.jpg"></li>
+			<li><img src="images/19.jpg"></li>
+			<li><img src="images/15.jpg"></li>
+		</ul>
+		<!-- 透明小盒子 -->
+		<div id="small_box"></div>
+		<ol id="ols">
+			<li><img src="images/20.jpg"></li>
+			<li><img src="images/8.jpg"></li>
+			<li><img src="images/19.jpg"></li>
+			<li><img src="images/15.jpg"></li>
+		</ol>
+	</div>
+	<!-- 右盒子 -->
+	<div id="bigbox">
+		<ul id="maxImg">
+			<li><img src="images/20.jpg"></li>
+			<li><img src="images/8.jpg"></li>
+			<li><img src="images/19.jpg"></li>
+			<li><img src="images/15.jpg"></li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			// 轮播效果
+			var timer=null,
+				nums=0;
+				autoplay();
+			function autoplay(){
+				timer=setInterval(auto,1000);
+			}
+			function auto(){
+				nums++;
+				if(nums>$('#oul li').size()-1){
+					nums=0;
+				}
+				if(nums<0){
+					nums=$('#oul li').size()-1;
+				}
+				$('#oul li').eq(nums).fadeIn(500).siblings().fadeOut(500);
+				$('#ols li').eq(nums).addClass('bg').siblings().removeClass('bg');
+				$('#maxImg li').eq(nums).fadeIn(500).siblings().fadeOut(500);
+			}
+			$('#box').hover(function(){
+				clearInterval(timer);
+				$('#bigbox').show();
+				$('#small_box').show();
+			},function(){
+				autoplay();
+				$('#bigbox').hide();
+				$('#small_box').hide();
+			})
+			$('#ols li').on('mouseover',function(){
+				var ind=$(this).index();
+				$('#oul li').eq(ind).fadeIn(500).siblings().fadeOut(500);
+				$('#ols li').eq(ind).addClass('bg').siblings().removeClass('bg');
+				$('#maxImg li').eq(ind).fadeIn(500).siblings().fadeOut(500);
+			})
+		// 放大镜
+		$('#box').on('mousemove',function(e){
+			var self=$(this),
+				small=$('#small_box');
+			var x=e.pageX-self.offset().left-small.width()/2;
+			var y=e.pageY-self.offset().top-small.height()/2;
+			if(x<0){
+				x=0;
+			}
+			if(x>self.width()-small.width()){
+				x=self.width()-small.width()
+			}
+			if(y<0){
+				y=0;
+			}
+			if(y>self.height()-small.height()){
+				y=self.height()-small.height()
+			}
+			$('#small_box').css({
+				'left':x,
+				'top':y
+			})
+			var left=$('#bigbox').width()/$('#small_box').width()*x;
+			var top=$('#bigbox').height()/$('#small_box').height()*y;
+			$('#maxImg').css({
+				'width':$('#bigbox').width()/$('#small_box').width()*self.width(),
+				'height':$('#bigbox').height()/$('#small_box').height()*self.height(),
+				'left':-left,
+				'top':-top
+			})
+		})
+	})	
+	</script>
+</body>
+</html>

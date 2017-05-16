@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>楼梯</title>
+	<script src="jquery/jquery1.1.js"></script>
+	<style>
+		*{padding: 0; margin: 0; list-style: none;}
+		#oul li{
+			width: 400px; height: 700px; background: green;
+			text-align: center; line-height: 700px; color: #fff;
+			font-size: 80px; font-weight: bold; margin: 0 auto;
+		}
+		#ols{position: fixed; right: -60px; bottom: 30px; display: none;}
+		#ols li{width: 120px; height: 45px; background: pink; margin-top: 10px; line-height: 45px; color: blue; font-weight: bold;}
+	</style>
+</head>
+<body>
+	<ul id="oul">
+			<li>F1</li>
+			<li style="background:red">F2</li>
+			<li style="background:orange">F3</li>
+			<li style="background:skyblue">F4</li>
+			<li style="background:yellow">F5</li>
+		</ul>
+		<ol id="ols">
+			<li>1F</li>
+			<li>2F</li>
+			<li>3F</li>
+			<li>4F</li>
+			<li>5F</li>
+			<li id="box">顶</li>
+		</ol>
+	<script>
+		$(function(){
+			var arr=[];
+			$('#oul li').each(function(){	
+			arr.push($(this).offset().top)
+			})
+			console.log(arr);
+			$(window).on('scroll',function(){
+				var s_top=$(this).scrollTop();
+				if(s_top>200){
+					$('#ols').show();
+				}else{
+					$('#ols').hide();
+				}
+				$(arr).each(function(k,val){
+					if(s_top>val){
+						$('#ols li').eq(k).stop().animate({'marginLeft':0},500).siblings().stop().animate({'marginLeft':60},500);
+					}
+				})
+			})
+
+			
+				$('#box').on('click',function(){
+					$(document .body).animate({
+						'scrollTop':0
+					})
+				})
+
+			$('#ols li').on('click',function(){
+				var ind=$(this).index();
+				$(window).scrollTop(arr[ind])
+			})
+		})
+	</script>
+</body>
+</html>
