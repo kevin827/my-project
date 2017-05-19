@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件绑定</title>
+</head>
+<body>
+	<script>
+	// 添加事件
+		function addevent(element,etype,handle){
+			if(element.addEventListener){
+				element.addEventListener(etype,handle,false);
+			}else if(element.attachEvent){
+				element.attachEvent("on"+etype,handle);
+			}else{
+				element["on"+etype]=handle;
+			}
+		}
+
+	// 事件解绑
+		function removeevent(element,etype,handle){
+			if(element.addEventListener){
+				element.removeEventListener(etype,handle,false);
+			}else if(element.attachEvent){
+				element.detachEvent("on"+etype,handle);
+			}else{
+				element["on"+type]=null;
+			}
+		}
+	</script>
+</body>
+</html>
