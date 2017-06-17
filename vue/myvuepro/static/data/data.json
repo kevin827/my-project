@@ -1,0 +1,11 @@
+{
+  "flag":1,
+  "info":[
+    {"id":1001,"name":"java","price":50},
+    {"id":1002,"name":"php","price":150},
+    {"id":1003,"name":"html","price":350},
+    {"id":1004,"name":"css","price":80},
+    {"id":1005,"name":"jquery","price":100},
+    {"id":1006,"name":"angular","price":70}
+  ]
+}
